@@ -8,12 +8,10 @@ public class Solution {
         int max = 0;
         int count = 0;
         boolean isOpen = false;
-        boolean isClose = false;
         for (char ch: binaryStr.toCharArray()) {
             if (ch == '1') {
                 if (isOpen) {
                     isOpen = false;
-                    isClose = true;
                     if (max < count) {
                         max = count;
                     }
