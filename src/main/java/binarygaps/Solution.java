@@ -16,10 +16,8 @@ public class Solution {
                         max = count;
                     }
                     count = 0;
-                    continue;
                 } else {
                     isOpen = true;
-                    continue;
                 }
             } else {
                 //ch=0
