@@ -68,7 +68,7 @@ public class WeekDayCounter {
 
     public static void main(String[] args) {
         final WeekDayCounter counter = new WeekDayCounter();
-        Integer i = 2;
+        Integer i = 1234567;
         String result = counter.solution(i);
         System.out.println(result);
     }
