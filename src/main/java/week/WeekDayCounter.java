@@ -43,23 +43,20 @@ public class WeekDayCounter {
                 Integer day2 = (Integer) i.next();
                 diff = day2 - day1;
 
-                if (!i.hasNext()) {
-                    if (diff == 1) {
-                        result.append("-").append(day2);
+                if (diff == 1) {
+                    //next -
+                    next = true;
+                } else {
+                    if (next) {
+                        result.append("-").append(day1).append(",").append(day2);
+                        next = false;
                     } else {
                         result.append(",").append(day2);
                     }
-                } else {
+                }
+                if (!i.hasNext()) {
                     if (diff == 1) {
-                        //next -
-                        next = true;
-                    } else {
-                        if (next) {
-                            result.append("-").append(day1).append(",").append(day2);
-                            next = false;
-                        } else {
-                            result.append(",").append(day2);
-                        }
+                        result.append("-").append(day2);
                     }
                 }
               day0 = day2;
@@ -72,7 +69,7 @@ public class WeekDayCounter {
 
     public static void main(String[] args) {
         final WeekDayCounter counter = new WeekDayCounter();
-        Integer i = 24;
+        Integer i = 2;
         String result = counter.solution(i);
         System.out.println(result);
     }
