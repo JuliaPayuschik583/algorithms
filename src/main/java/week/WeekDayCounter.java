@@ -22,35 +22,34 @@ public class WeekDayCounter {
         final StringBuilder result = new StringBuilder();
 
         if (weekDaysSet.size() == 1) {
-            return result.append(weekDaysSet).toString();
+            Iterator iterator = weekDaysSet.iterator();
+            return result.append(iterator.next()).toString();
         }
-
-        Iterator iterator = weekDaysSet.iterator();
 
         boolean next = false;
         boolean isFirst = true;
+        Integer day0 = null;
         Integer day1 = null;
-        Integer lastDay = null;
-        boolean isLast = false;
         int diff = 0;
-        while (iterator.hasNext() || isLast) {
+
+        for (Iterator i = weekDaysSet.iterator(); i.hasNext();) {
             if (isFirst) {
-                day1 = (Integer) iterator.next();
+                day1 = (Integer) i.next();
                 result.append(day1);
+                day0 = day1;
                 isFirst = false;
             } else {
-                if (isLast) {
-                    //last element
+                day1 = day0;
+                Integer day2 = (Integer) i.next();
+                diff = day2 - day1;
+
+                if (!i.hasNext()) {
                     if (diff == 1) {
-                        result.append("-").append(lastDay);//day2
+                        result.append("-").append(day2);
+                    } else {
+                        result.append(",").append(day2);
                     }
-                    isLast = false;
                 } else {
-
-                    day1 = (Integer) iterator.next();
-                    Integer day2 = (Integer) iterator.next();
-
-                    diff = day2 - day1;
                     if (diff == 1) {
                         //next -
                         next = true;
@@ -62,21 +61,18 @@ public class WeekDayCounter {
                             result.append(",").append(day2);
                         }
                     }
-
-                    if (!iterator.hasNext()) {
-                        isLast = true;
-                        lastDay = day2;
-                    }
                 }
+              day0 = day2;
             }
         }
+
 
         return result.toString();
     }
 
     public static void main(String[] args) {
         final WeekDayCounter counter = new WeekDayCounter();
-        Integer i = 2;
+        Integer i = 24;
         String result = counter.solution(i);
         System.out.println(result);
     }
