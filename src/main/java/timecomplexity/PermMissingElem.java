@@ -8,13 +8,6 @@ public class PermMissingElem {
         if (A.length == 0) {
             return 1;
         }
-        if (A.length == 1) {
-            if (A[0] != 1) {
-                return 1;
-            } else {
-                return A[0] + 1;
-            }
-        }
         Arrays.sort(A);
 
         boolean isExistFirst = A[0] == 1;
@@ -27,17 +20,15 @@ public class PermMissingElem {
         }
 
         if (!isExistFirst) {
-            return 1;
+            return A[0] - 1;
         } else {
             return A[A.length-1] + 1;
         }
     }
 
     public static void main(String[] args) {
-        int[] A = new int[3];
-        A[0] = 0;
-        A[1] = 2;
-        A[2] = 3;
+        int[] A = new int[1];
+        A[0] = 5;
         PermMissingElem main = new PermMissingElem();
         int result = main.solution(A);
         System.out.println(result);
