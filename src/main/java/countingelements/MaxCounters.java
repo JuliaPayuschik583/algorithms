@@ -28,8 +28,9 @@ public class MaxCounters {
         }
 
         for (int iii = 0; iii < N; iii++) {
-            if (countersArray[iii] < lastUpdate)
+            if (countersArray[iii] < lastUpdate) {
                 countersArray[iii] = lastUpdate;
+            }
         }
 
         return countersArray;
