@@ -1,9 +1,6 @@
 package countingelements;
 
 import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.TreeSet;
 
 public class MissingInteger {
 
@@ -20,9 +17,14 @@ public class MissingInteger {
         }
 
 
+        int result = A[A.length - 1] + 1;
         boolean isStart = true;
+
         for (int i = 1; i < A.length; i++) {
-            if (A[i - 1] <= 0 || A[i - 1] == A[i]) {
+            if (A[i - 1] <= 0) {
+                continue;
+            } else if (A[i - 1] == A[i]) {
+                result = A[i] + 1;
                 continue;
             }
             int diff = A[i] - A[i - 1];
@@ -30,8 +32,10 @@ public class MissingInteger {
                 if (isStart) {
                     return 1;
                 }
-                return A[i - 1] + 1;
+                result = A[i - 1] + 1;
+                return result;
             }
+
             if (A[i - 1] == 1) {
                 isStart = false;
             }
@@ -41,18 +45,12 @@ public class MissingInteger {
             return 1;
         }
 
-        int result = A[A.length-1] - 1;
-        if (result == A[A.length-2]) {
-            result = A[A.length-1] + 1;
-        }
-        result = result <= 0 ? 1 : result;
-
         return result;
     }
 
     public static void main(String[] args) {
         int[] A = new int[6];
-        A[0] = 1;//1, 3, 6, 4, 1, 2 = 5 // [4, 5, 6, 2] 2,4,5,6  = 1
+        A[0] = 1;//1, 3, 6, 4, 1, 2 = 5
         A[1] = 3;
         A[2] = 6;
         A[3] = 4;
@@ -60,17 +58,13 @@ public class MissingInteger {
         A[5] = 2;
 
         int[] A1 = new int[6];
-        A1[0] = -1;//1, 3, 6, 4, 1, 2 = 5 // [4, 5, 6, 2] 2,4,5,6  = 1
-        A1[1] = 0;//1, 3, 6, 4, 1, 2 = 5 // [4, 5, 6, 2] 2,4,5,6  = 1
-        A1[2] = 4;//1, 3, 6, 4, 1, 2 = 5 // [4, 5, 6, 2] 2,4,5,6  = 1
+        A1[0] = -1;
+        A1[1] = 0;
+        A1[2] = 4;
         A1[3] = 5;
         A1[4] = 6;
-        A1[5] = 2;
-//        A1[4] = 1;
-//        A1[5] = 2;
-//        A[6] = -1;
+        A1[5] = 2;//=1
 
-        //[90, 91, 92, 93] = 1
         int[] A2 = new int[4];
         A2[0] = 90;
         A2[1] = 91;
@@ -97,6 +91,11 @@ public class MissingInteger {
         A4[6] = 7;
         A4[7] = 8;//=9
         A4[8] = 8;//=9
+
+        int[] A5 = new int[3];
+        A5[0] = 1;
+        A5[1] = 2;
+        A5[2] = 3;//=4
         MissingInteger main = new MissingInteger();
         int result = main.solution(A4);
         System.out.println(result);
