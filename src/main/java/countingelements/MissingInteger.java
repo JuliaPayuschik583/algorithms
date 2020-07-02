@@ -5,8 +5,6 @@ import java.util.Arrays;
 public class MissingInteger {
 
     public int solution(int[] A) {
-        Arrays.sort(A);
-
         if (A.length == 1) {
             if (A[0] < 0) {
                 return 1;
@@ -15,6 +13,8 @@ public class MissingInteger {
             result = result <= 0 ? A[0] + 1 : result;
             return result;
         }
+
+        Arrays.sort(A);
 
         int result = A[A.length - 1] + 1;
         boolean isStart = true;
@@ -45,6 +45,39 @@ public class MissingInteger {
         }
 
         return result;
+    }
+
+    private int solution2(int[] A) {
+        if (A.length == 1 && A[0] == 1) {
+            return 2;
+        }
+
+        int N;
+        Arrays.sort(A);
+
+        if (A[A.length - 1] <= 0 || A[0] > 1) {
+            return 1;
+        }
+
+        N = A[A.length - 1] + 1;
+        boolean isOneExists = false;
+
+        for (int i = 1; i < A.length; i++) {
+            if (A[i - 1] == 1) {
+                isOneExists = true;
+            }
+            int nextTrue = A[i - 1] + 1;
+            if (A[i - 1] > 0 && nextTrue != A[i] && A[i - 1] != A[i]) {
+                N = nextTrue;
+                break;
+            }
+        }
+
+        if (!isOneExists) {
+            return 1;
+        }
+
+        return N;
     }
 
     public static void main(String[] args) {
