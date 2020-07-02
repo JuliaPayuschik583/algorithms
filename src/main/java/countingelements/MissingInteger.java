@@ -16,7 +16,6 @@ public class MissingInteger {
             return result;
         }
 
-
         int result = A[A.length - 1] + 1;
         boolean isStart = true;
 
