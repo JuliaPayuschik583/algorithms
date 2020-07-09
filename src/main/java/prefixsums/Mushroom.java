@@ -11,7 +11,7 @@ public class Mushroom {
         for (int p = 0; p < Math.min(m, k) + 1; p++) {
             int left_pos = k - p;
             System.out.println("l = " + left_pos);
-            int right_pos = Math.min(n - 1, Math.max(k, k + m - 2 * p));
+            int right_pos = Math.min(n - 1, Math.max(k, k + m - 2 * p));//2* need return!!!
             System.out.println("r = " + right_pos);
             result = Math.max(result, count_total(pref, left_pos, right_pos));
         }
