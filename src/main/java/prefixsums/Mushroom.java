@@ -42,7 +42,16 @@ public class Mushroom {
 
     public static void main(String[] args) {
         Mushroom main = new Mushroom();
-        int[] A = new int[7];//2 3 7 5 1 3 9
+//        int[] A = new int[7];//2 3 7 5 1 3 9
+//        A[0] = 2;
+//        A[1] = 3;
+//        A[2] = 7;
+//        A[3] = 5;
+//        A[4] = 1;
+//        A[5] = 3;
+//        A[6] = 9;
+
+        int[] A = new int[12];
         A[0] = 2;
         A[1] = 3;
         A[2] = 7;
@@ -50,6 +59,11 @@ public class Mushroom {
         A[4] = 1;
         A[5] = 3;
         A[6] = 9;
+        A[7] = 9;
+        A[8] = 9;
+        A[9] = 9;
+        A[10] = 9;
+        A[11] = 9;
         //start k = 4 and should perform m = 6 moves
         int k = 4;
         int m = 6;
