@@ -32,12 +32,12 @@ public class Mushroom {
     }
 
     private int[] prefix_sums(int []A) {
-         int n = A.length;
-         int[] P = new int[n + 1];
-         for (int k = 1; k < n + 1; k ++) {
-             P[k] = P[k - 1] + A[k - 1];
-         }
-         return P;
+        int n = A.length;
+        int[] P = new int[n + 1];
+        for (int k = 1; k < n + 1; k ++) {
+            P[k] = P[k - 1] + A[k - 1];
+        }
+        return P;
     }
 
     public static void main(String[] args) {
